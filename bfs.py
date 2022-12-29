@@ -1,6 +1,6 @@
 from queue import Queue
 
-class bfs:
+class BFS:
     def __init__(self, graph, start,goal):
         self.graph = graph
         self.start = start
@@ -64,8 +64,8 @@ class bfs:
             if x == ex and y == ey:
                 return path
 
-            # For each of the four possible moves (right and down), do the following:
-            for dx, dy in [(0, 1), (1, 0)]:
+            # For each of the four possible moves , do the following:
+            for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
                 # Calculate the destination cell
                 nx, ny = x + dx, y + dy
 
@@ -77,7 +77,7 @@ class bfs:
 
                     # Add the destination cell to the path
                     path.append((nx, ny))
-                    # If the destination cell is reached, return the path and the reconstructed path
+                    # If the destination cell is reached, return the path and the reconstructed short path
                     if nx == ex and ny == ey:
                         return path,self.reconstructPath(parent, (sx, sy), (ex, ey))
         # Return an empty list if the destination cell could not be reached
